@@ -9,7 +9,7 @@
 
 版本 Version
 ---
-0.0.1
+0.0.2
 
 说明 Detail
 ---
@@ -18,12 +18,14 @@
 
 #### Extension
 * `Dictionary`          - Dictionary扩展
+* `String`              - String扩展
 * `View`                - UIView扩展
 
 #### Framework
 * `File`                - 实现文件生成和读写功能
 * `Model`               - 数据模型基类
 * `QRCode`              - 利用AVFoundation框架生成二维码
+* `Scanner`             - 扫描器
 
 安装 Install
 --- 
@@ -36,7 +38,7 @@
 ```
 target 'YourTarget' do
     platform:ios, '8.0'
-    pod 'PFKitSwift', '~> 0.0.1'
+    pod 'PFKitSwift', '~> 0.0.2'
 end
 ```
 
