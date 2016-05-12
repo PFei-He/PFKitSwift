@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:PFKit"
+      name = "PFKit">
+      <Group
+         location = "container:"
+         name = "Debug">
+         <FileRef
+            location = "group:PFKit/Debug.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Extension">
+         <FileRef
+            location = "group:PFKit/Dictionary.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFKit/View.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Framework">
+         <FileRef
+            location = "group:PFKit/File.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFKit/Model.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFKit/QRCode.swift">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:Demo/Demo.xcodeproj">
+   </FileRef>
+</Workspace>

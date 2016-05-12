@@ -13,11 +13,17 @@
 
 说明 Detail
 ---
+#### Debug
+* `Debug`               - 调试
+
+#### Extension
+* `Dictionary`          - Dictionary扩展
+* `View`                - UIView扩展
+
 #### Framework
+* `File`                - 实现文件生成和读写功能
 * `Model`               - 数据模型基类
- 
-#### Other
-* `PFkit`               - 类库接口与调试
+* `QRCode`              - 利用AVFoundation框架生成二维码
 
 安装 Install
 --- 
@@ -28,8 +34,10 @@
 
 #### CocoaPods
 ```
-platform:ios, '8.0'
-pod 'PFKitSwift', '~> 0.0.1'
+target 'YourTarget' do
+    platform:ios, '8.0'
+    pod 'PFKitSwift', '~> 0.0.1'
+end
 ```
 
 使用 Use
