@@ -39,6 +39,6 @@ public class Debug: NSObject {
      - Returns: 版本号
      */
     public class func debugVersion() -> String {
-        return "[ PFKit ][ INFO ] current version: 0.0.1"
+        return "[ PFKit ][ INFO ] current version: 0.0.2"
     }
 }

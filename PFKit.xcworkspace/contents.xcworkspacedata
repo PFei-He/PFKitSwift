@@ -18,6 +18,9 @@
             location = "group:PFKit/Dictionary.swift">
          </FileRef>
          <FileRef
+            location = "group:PFKit/String.swift">
+         </FileRef>
+         <FileRef
             location = "group:PFKit/View.swift">
          </FileRef>
       </Group>
@@ -32,6 +35,9 @@
          </FileRef>
          <FileRef
             location = "group:PFKit/QRCode.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PFKit/Scanner.swift">
          </FileRef>
       </Group>
    </Group>

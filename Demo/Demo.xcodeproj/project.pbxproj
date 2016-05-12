@@ -19,6 +19,8 @@
 		4565F5F61CE46FDD00AA978E /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565F5F51CE46FDD00AA978E /* Dictionary.swift */; };
 		4565F5F81CE46FE300AA978E /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565F5F71CE46FE300AA978E /* Debug.swift */; };
 		4565F5FC1CE470CA00AA978E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565F5FB1CE470CA00AA978E /* View.swift */; };
+		4565F6141CE485E900AA978E /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565F6131CE485E900AA978E /* Scanner.swift */; };
+		4565F6161CE485F000AA978E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565F6151CE485F000AA978E /* String.swift */; };
 		4567880A1BFC96760034EB18 /* person.json in Resources */ = {isa = PBXBuildFile; fileRef = 456788091BFC96760034EB18 /* person.json */; };
 		457B57911C0069EF0033B62A /* person.xml in Resources */ = {isa = PBXBuildFile; fileRef = 457B57901C0069EF0033B62A /* person.xml */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		4565F5F51CE46FDD00AA978E /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		4565F5F71CE46FE300AA978E /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		4565F5FB1CE470CA00AA978E /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		4565F6131CE485E900AA978E /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		4565F6151CE485F000AA978E /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		456788091BFC96760034EB18 /* person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = person.json; sourceTree = "<group>"; };
 		457B57901C0069EF0033B62A /* person.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = person.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +146,7 @@
 				4565F5EF1CE46FD800AA978E /* File.swift */,
 				4565F5F01CE46FD800AA978E /* Model.swift */,
 				4565F5F11CE46FD800AA978E /* QRCode.swift */,
+				4565F6131CE485E900AA978E /* Scanner.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				4565F5F51CE46FDD00AA978E /* Dictionary.swift */,
+				4565F6151CE485F000AA978E /* String.swift */,
 				4565F5FB1CE470CA00AA978E /* View.swift */,
 			);
 			name = Extension;
@@ -246,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4565F5F31CE46FD800AA978E /* Model.swift in Sources */,
+				4565F6161CE485F000AA978E /* String.swift in Sources */,
 				456226121BF57CEF008202A7 /* RootModel.swift in Sources */,
 				4565F5F21CE46FD800AA978E /* File.swift in Sources */,
 				456226101BF57CE2008202A7 /* RootViewController.swift in Sources */,
@@ -253,6 +260,7 @@
 				4565F5FC1CE470CA00AA978E /* View.swift in Sources */,
 				4565F5F81CE46FE300AA978E /* Debug.swift in Sources */,
 				456225F01BF57C94008202A7 /* AppDelegate.swift in Sources */,
+				4565F6141CE485E900AA978E /* Scanner.swift in Sources */,
 				4565F5F41CE46FD800AA978E /* QRCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
