@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name                    = 'PFKitSwift'
-    s.version                 = '0.0.2'
+    s.version                 = '0.0.3'
     s.summary                 = '简易的iOS组件包。A simple iOS components.'
     s.homepage                = 'https://github.com/PFei-He/PFKitSwift'
     s.license                 = { :type => 'MIT', :file => 'LICENSE' }

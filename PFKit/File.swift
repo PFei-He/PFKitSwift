@@ -30,7 +30,12 @@
 
 import Foundation
 
+///调试模式
+private var DEBUG_MODE = false
+
 public class File: NSObject {
+
+    // MARK: - Public Methods
 
     /**
      创建文件
@@ -42,8 +47,13 @@ public class File: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
-            manager.createFileAtPath(path, contents:nil, attributes:nil)
-            modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
+            if manager.createFileAtPath(path, contents:nil, attributes:nil) && DEBUG_MODE {
+                modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
+                print("[ PFKit ][ DEBUG ] file created")
+                print("[ PFKit ][ DEBUG ] file path: \(path)")
+            }
+        } else if DEBUG_MODE {
+            print("[ PFKit ][ DEBUG ] file exists")
         }
     }
     
@@ -58,8 +68,13 @@ public class File: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
-            manager.createFileAtPath(path, contents:nil, attributes:nil)
-            modifyWithName(fileName, setParams: params)
+            if manager.createFileAtPath(path, contents:nil, attributes:nil) && DEBUG_MODE {
+                modifyWithName(fileName, setParams: params)
+                print("[ PFKit ][ DEBUG ] file created")
+                print("[ PFKit ][ DEBUG ] file path: \(path)")
+            }
+        } else if DEBUG_MODE {
+            print("[ PFKit ][ DEBUG ] file exists")
         }
     }
     
@@ -152,9 +167,28 @@ public class File: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if manager.fileExistsAtPath(path) {//如果文件存在则删除文件
-            try! manager.removeItemAtPath(path)
+            do {
+                try manager.removeItemAtPath(path)
+                if DEBUG_MODE {
+                    print("[ PFKit ][ DEBUG ] file removed")
+                }
+            } catch {
+                print("[ PFKit ][ DEBUG ] file remove failed")
+            }
         }
     }
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter true 或 false
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool) {
+        DEBUG_MODE = openOrNot
+    }
+    
+    // MARK: - Private Methods
     
     ///读取资源包文件或沙盒文件
     private class func readWithName(fileName: String, directory: String, type: String?) -> AnyObject {

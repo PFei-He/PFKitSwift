@@ -33,12 +33,27 @@ import Foundation
 public class Debug: NSObject {
 
     /**
-     版本号
+     版本信息
      - Note: 无
      - Parameter 无
-     - Returns: 版本号
+     - Returns: 无
      */
-    public class func debugVersion() -> String {
-        return "[ PFKit ][ INFO ] current version: 0.0.2"
+    public class func debugVersion() {
+        print("[ PFKit ][ INFO ] current version: 0.0.3")
+        print("[ PFKit ][ INFO ] programming language: Swift")
+        print("[ PFKit ][ INFO ] open source license: MIT")
+        print("[ PFKit ][ INFO ] join me: https://github.com/PFei-He/PFKitSwift")
+        print("[ PFKit ][ INFO ] THANK YOU FOR USING !!")
+    }
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter true 或 false
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool) {
+        File.debugMode(openOrNot)
+        Model.debugMode(openOrNot)
     }
 }
