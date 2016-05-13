@@ -91,9 +91,19 @@ public class File: NSObject {
      - Returns: 文件中的数据
      */
     public class func readDictionaryWithName(fileName: String) -> Dictionary<String, AnyObject> {
-        var dictionary = NSDictionary(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
-        dictionary.removeValueForKey("")
-        return dictionary
+        let string = readWithName(fileName, directory: "document", type: nil) as! String
+        let dictionary = Dictionary<String, AnyObject>()
+        if string != "" {
+            var dictionary = NSDictionary(contentsOfFile: string) as! Dictionary<String, AnyObject>
+            dictionary.removeValueForKey("")
+            return dictionary
+        } else {
+            if DEBUG_MODE {
+                print("[ PFKit ][ DEBUG ] Dictionary file has not parameter.")
+                print("[ PFKit ][ ERROR ] Read dictionary file failed.")
+            }
+            return dictionary
+        }
     }
     
     /**
@@ -109,7 +119,10 @@ public class File: NSObject {
         do {
             result = try String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
         } catch {
-            result = "[ PFKit ][ ERROR ] Read string file failed."
+            if DEBUG_MODE {
+                print("[ PFKit ][ DEBUG ] String file has not parameter.")
+                print("[ PFKit ][ ERROR ] Read string file failed.")
+            }
         }
         return result
     }
@@ -185,7 +198,9 @@ public class File: NSObject {
                     print("[ PFKit ][ DEBUG ] File removed.")
                 }
             } catch {
-                print("[ PFKit ][ ERROR ] File remove failed.")
+                if DEBUG_MODE {
+                    print("[ PFKit ][ ERROR ] File remove failed.")
+                }
             }
         } else if DEBUG_MODE {
             print("[ PFKit ][ ERROR ] File does not exist.")
@@ -208,8 +223,15 @@ public class File: NSObject {
     private class func readWithName(fileName: String, directory: String, type: String?) -> AnyObject {
         if directory == "bundle" {//资源包文件
             let path = NSBundle.mainBundle().pathForResource(fileName, ofType: type)
-            let string = try? String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-            return string!.dataUsingEncoding(NSUTF8StringEncoding)!
+            var string = String()
+            do {
+                string = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+            } catch {
+                if DEBUG_MODE {
+                    print("[ PFKit ][ ERROR ] Read file failed.")
+                }
+            }
+            return string.dataUsingEncoding(NSUTF8StringEncoding)!
         } else {//沙盒文件
             let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
             let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)
