@@ -47,13 +47,16 @@ public class File: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
-            if manager.createFileAtPath(path, contents:nil, attributes:nil) && DEBUG_MODE {
-                modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
-                print("[ PFKit ][ DEBUG ] file created")
-                print("[ PFKit ][ DEBUG ] file path: \(path)")
+            let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
+            modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
+            if result && DEBUG_MODE {
+                print("[ PFKit ][ DEBUG ] File created.")
+                print("[ PFKit ][ DEBUG ] File path: \(path).")
+            } else if DEBUG_MODE {
+                print("[ PFKit ][ ERROR ] File create failed.")
             }
         } else if DEBUG_MODE {
-            print("[ PFKit ][ DEBUG ] file exists")
+            print("[ PFKit ][ ERROR ] File exists.")
         }
     }
     
@@ -68,13 +71,16 @@ public class File: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
-            if manager.createFileAtPath(path, contents:nil, attributes:nil) && DEBUG_MODE {
-                modifyWithName(fileName, setParams: params)
-                print("[ PFKit ][ DEBUG ] file created")
-                print("[ PFKit ][ DEBUG ] file path: \(path)")
+            let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
+            modifyWithName(fileName, setParams: params)
+            if result && DEBUG_MODE {
+                print("[ PFKit ][ DEBUG ] File created.")
+                print("[ PFKit ][ DEBUG ] File path: \(path).")
+            } else if DEBUG_MODE {
+                print("[ PFKit ][ ERROR ] File create failed.")
             }
         } else if DEBUG_MODE {
-            print("[ PFKit ][ DEBUG ] file exists")
+            print("[ PFKit ][ ERROR ] File exists.")
         }
     }
     
@@ -99,7 +105,13 @@ public class File: NSObject {
     public class func readStringWithName(fileName: String) -> String {
         var dictionary = NSDictionary(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
         dictionary.removeValueForKey("")
-        return try! String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
+        var result = String()
+        do {
+            result = try String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
+        } catch {
+            result = "[ PFKit ][ ERROR ] Read string file failed."
+        }
+        return result
     }
     
     /**
@@ -170,11 +182,13 @@ public class File: NSObject {
             do {
                 try manager.removeItemAtPath(path)
                 if DEBUG_MODE {
-                    print("[ PFKit ][ DEBUG ] file removed")
+                    print("[ PFKit ][ DEBUG ] File removed.")
                 }
             } catch {
-                print("[ PFKit ][ DEBUG ] file remove failed")
+                print("[ PFKit ][ ERROR ] File remove failed.")
             }
+        } else if DEBUG_MODE {
+            print("[ PFKit ][ ERROR ] File does not exist.")
         }
     }
     
