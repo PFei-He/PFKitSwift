@@ -39,7 +39,7 @@ public class Debug: NSObject {
      - Returns: 无
      */
     public class func debugVersion() {
-        print("[ PFKit ][ INFO ] current version: 0.0.4")
+        print("[ PFKit ][ INFO ] current version: 0.0.5")
         print("[ PFKit ][ INFO ] programming language: Swift")
         print("[ PFKit ][ INFO ] open source license: MIT")
         print("[ PFKit ][ INFO ] join me: https://github.com/PFei-He/PFKitSwift")
@@ -49,11 +49,23 @@ public class Debug: NSObject {
     /**
      调试模式
      - Note: 无
-     - Parameter true 或 false
+     - Parameter openOrNot: 是否打开调试模式
      - Returns: 无
      */
     public class func debugMode(openOrNot: Bool) {
-        File.debugMode(openOrNot)
-        Model.debugMode(openOrNot)
+        File.debugMode(openOrNot, debugTarget: "PFKit")
+        Model.debugMode(openOrNot, debugTarget: "PFKit")
+    }
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool, debugTarget target: String) {
+        File.debugMode(openOrNot, debugTarget: target)
+        Model.debugMode(openOrNot, debugTarget: target)
     }
 }

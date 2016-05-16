@@ -32,6 +32,8 @@ import Foundation
 
 ///调试模式
 private var DEBUG_MODE = false
+///调试目标
+private var DEBUG_TARGET = ""
 
 public class Model: NSObject, NSXMLParserDelegate {
     
@@ -95,8 +97,8 @@ public class Model: NSObject, NSXMLParserDelegate {
             //判断数据类型
             if json is Dictionary<String, AnyObject> == false && json is NSData == false {
                 if DEBUG_MODE {
-                    print("[ PFKit ][ ERROR ] The JSON object must be type of dictionary or data.")
-                    print("[ PFKit ][ ERROR ] class: \(String(classForCoder))")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] The JSON object must be type of dictionary or data.")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] class: \(String(classForCoder))")
                 }
                 return
             } else if json is NSData {
@@ -117,8 +119,8 @@ public class Model: NSObject, NSXMLParserDelegate {
             //判断数据类型
             if xml is String == false && xml is NSData == false {
                 if DEBUG_MODE {
-                    print("[ PFKit ][ ERROR ] The XML object must be type of string or data.")
-                    print("[ PFKit ][ ERROR ] class: \(String(classForCoder))")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] The XML object must be type of string or data.")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] class: \(String(classForCoder))")
                 }
                 return
             } else if xml is String {
@@ -131,8 +133,8 @@ public class Model: NSObject, NSXMLParserDelegate {
             if parser.parse() {//解析XML
                 self.JSON = array[0]
             } else if DEBUG_MODE {
-                print("[ PFKit ][ ERROR ] XML data can't be parse.")
-                print("[ PFKit ][ ERROR ] class: \(String(classForCoder))")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] XML data can't be parse.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] class: \(String(classForCoder))")
             }
         }
     }
@@ -148,11 +150,11 @@ public class Model: NSObject, NSXMLParserDelegate {
      */
     override public func setValue(value: AnyObject?, forUndefinedKey key: String) {
         if DEBUG_MODE {
-            print("[ PFKit ][ ERROR ] found undefined key when parsing.")
-            print("[ PFKit ][ ERROR ] class: \(String(classForCoder))")
-            print("[ PFKit ][ ERROR ] key: \(key)")
-            print("[ PFKit ][ ERROR ] type: \(String(value?.classForCoder))")
-            print("[ PFKit ][ ERROR ] value: \(String(value))")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] found undefined key when parsing.")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] class: \(String(classForCoder))")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] key: \(key)")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] type: \(String(value?.classForCoder))")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] value: \(String(value))")
         }
     }
     
@@ -199,11 +201,13 @@ public class Model: NSObject, NSXMLParserDelegate {
     /**
      调试模式
      - Note: 无
-     - Parameter true 或 false
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
      - Returns: 无
      */
-    public class func debugMode(openOrNot: Bool) {
+    public class func debugMode(openOrNot: Bool, debugTarget terget: String) {
         DEBUG_MODE = openOrNot
+        DEBUG_TARGET = terget
     }
     
     // MARK: - NSXMLParserDelegate Methods

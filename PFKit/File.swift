@@ -32,6 +32,8 @@ import Foundation
 
 ///调试模式
 private var DEBUG_MODE = false
+///调试目标
+private var DEBUG_TARGET = ""
 
 public class File: NSObject {
 
@@ -50,13 +52,13 @@ public class File: NSObject {
             let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
             modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
             if result && DEBUG_MODE {
-                print("[ PFKit ][ DEBUG ] File created.")
-                print("[ PFKit ][ DEBUG ] File path: \(path).")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File created.")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
             } else if DEBUG_MODE {
-                print("[ PFKit ][ ERROR ] File create failed.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] File create failed.")
             }
         } else if DEBUG_MODE {
-            print("[ PFKit ][ ERROR ] File exists.")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] File exists.")
         }
     }
     
@@ -74,13 +76,13 @@ public class File: NSObject {
             let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
             modifyWithName(fileName, setParams: params)
             if result && DEBUG_MODE {
-                print("[ PFKit ][ DEBUG ] File created.")
-                print("[ PFKit ][ DEBUG ] File path: \(path).")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File created.")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
             } else if DEBUG_MODE {
-                print("[ PFKit ][ ERROR ] File create failed.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] File create failed.")
             }
         } else if DEBUG_MODE {
-            print("[ PFKit ][ ERROR ] File exists.")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] File exists.")
         }
     }
     
@@ -99,8 +101,8 @@ public class File: NSObject {
             return dictionary
         } else {
             if DEBUG_MODE {
-                print("[ PFKit ][ DEBUG ] Dictionary file has not parameter.")
-                print("[ PFKit ][ ERROR ] Read dictionary file failed.")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] Dictionary file has not parameter.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] Read dictionary file failed.")
             }
             return dictionary
         }
@@ -120,8 +122,8 @@ public class File: NSObject {
             result = try String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
         } catch {
             if DEBUG_MODE {
-                print("[ PFKit ][ DEBUG ] String file has not parameter.")
-                print("[ PFKit ][ ERROR ] Read string file failed.")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] String file has not parameter.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] Read string file failed.")
             }
         }
         return result
@@ -195,26 +197,28 @@ public class File: NSObject {
             do {
                 try manager.removeItemAtPath(path)
                 if DEBUG_MODE {
-                    print("[ PFKit ][ DEBUG ] File removed.")
+                    print("[ \(DEBUG_TARGET) ][ DEBUG ] File removed.")
                 }
             } catch {
                 if DEBUG_MODE {
-                    print("[ PFKit ][ ERROR ] File remove failed.")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] File remove failed.")
                 }
             }
         } else if DEBUG_MODE {
-            print("[ PFKit ][ ERROR ] File does not exist.")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] File does not exist.")
         }
     }
     
     /**
      调试模式
      - Note: 无
-     - Parameter true 或 false
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
      - Returns: 无
      */
-    public class func debugMode(openOrNot: Bool) {
+    public class func debugMode(openOrNot: Bool, debugTarget target: String) {
         DEBUG_MODE = openOrNot
+        DEBUG_TARGET = target
     }
     
     // MARK: - Private Methods
@@ -228,7 +232,7 @@ public class File: NSObject {
                 string = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
             } catch {
                 if DEBUG_MODE {
-                    print("[ PFKit ][ ERROR ] Read file failed.")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] Read file failed.")
                 }
             }
             return string.dataUsingEncoding(NSUTF8StringEncoding)!
