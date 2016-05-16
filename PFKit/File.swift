@@ -59,6 +59,7 @@ public class File: NSObject {
             }
         } else if DEBUG_MODE {
             print("[ \(DEBUG_TARGET) ][ ERROR ] File exists.")
+            print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
         }
     }
     
@@ -83,6 +84,7 @@ public class File: NSObject {
             }
         } else if DEBUG_MODE {
             print("[ \(DEBUG_TARGET) ][ ERROR ] File exists.")
+            print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
         }
     }
     
