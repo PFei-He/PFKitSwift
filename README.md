@@ -49,6 +49,10 @@ end
 import PFKitSwift
 ```
  
+Objective-C
+---
+`PFKit`提供了`Objective-C`的版本以便使用。`PFKit`also provides`Objective-C`version. [PFKitObjC](https://github.com/PFei-He/PFKitObjC)
+ 
 许可证 LICENSE
 ---
 `PFKit`使用 MIT 许可证，详情见 [LICENSE](https://raw.githubusercontent.com/PFei-He/PFKitSwift/master/LICENSE) 文件。
