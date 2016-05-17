@@ -9,7 +9,7 @@
 
 版本 Version
 ---
-0.0.6
+0.0.7
 
 说明 Detail
 ---
@@ -38,7 +38,7 @@
 ```
 target 'YourTarget' do
     platform:ios, '8.0'
-    pod 'PFKitSwift', '~> 0.0.6'
+    pod 'PFKitSwift', '~> 0.0.7'
 end
 ```
 
@@ -52,7 +52,7 @@ import PFKitSwift
 Objective-C
 ---
 `PFKit`提供了`Objective-C`的版本以便使用。[PFKitObjC](https://github.com/PFei-He/PFKitObjC) <br>
-`PFKit`also provides`Objective-C`version.[PFKitObjC](https://github.com/PFei-He/PFKitObjC)
+`PFKit`also provides`Objective-C`version. [PFKitObjC](https://github.com/PFei-He/PFKitObjC)
  
 许可证 LICENSE
 ---
